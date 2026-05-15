@@ -1,0 +1,17 @@
+{
+  "name": "clase-08",
+  "version": "1.0.0",
+  "description": "Server Express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jean Paul Ferreira",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
