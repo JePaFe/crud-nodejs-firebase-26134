@@ -1,15 +1,11 @@
 import express from "express";
+import productsRouter from "./src/routes/products.router.js";
+import usersRouter from "./src/routes/users.router.js";
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-
-const products = [
-  { id: 1, name: "Mouse", price: 12000 },
-  { id: 2, name: "Teclado", price: 25000 },
-  { id: 3, name: "Monitor", price: 150000 },
-];
 
 app.get("/", (req, res) => {
   res.send(`
@@ -18,69 +14,8 @@ app.get("/", (req, res) => {
   `);
 });
 
-app.get("/products", (req, res) => {
-  res.json(products);
-});
-
-app.get("/products/:id", (req, res) => {
-  const id = Number(req.params.id);
-
-  const product = products.find((product) => product.id === id);
-
-  if (!product) {
-    return res.status(404).json({
-      message: "Producto no encontrado",
-    });
-  }
-
-  res.json(product);
-});
-
-app.post("/products", (req, res) => {
-  const { name, price } = req.body;
-
-  if (!name || !price) {
-    return res.status(400).json({
-      message: "Faltan datos obligatorios",
-    });
-  }
-
-  const newProduct = {
-    id: products.length + 1,
-    name,
-    price,
-  };
-
-  products.push(newProduct);
-
-  res.status(201).json(newProduct);
-});
-
-app.delete("/products/:id", (req, res) => {
-  const id = Number(req.params.id);
-
-  const productIndex = products.findIndex((product) => product.id === id);
-
-  if (productIndex === -1) {
-    return res.status(404).json({
-      message: "Producto no encontrado",
-    });
-  }
-
-  const deletedProduct = products.splice(productIndex, 1);
-
-  res.json({
-    message: "Producto eliminado",
-    product: deletedProduct[0],
-  });
-});
-
-app.get("/users", (req, res) => {
-  res.json([
-    { id: 1, name: "Ana" },
-    { id: 2, name: "Pedro" },
-  ]);
-});
+app.use('/api/products', productsRouter);
+app.use(usersRouter);
 
 app.get("/up", (req, res) => {
   res.json({
