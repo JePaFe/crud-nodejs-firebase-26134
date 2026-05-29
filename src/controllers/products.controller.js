@@ -10,6 +10,7 @@ export const getProducts = (req, res) => {
 
 export const getProductById = (req, res) => {
   const id = Number(req.params.id);
+  // const { id } = req.params;
 
   const product = products.find((product) => product.id === id);
 

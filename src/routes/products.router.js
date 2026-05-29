@@ -9,6 +9,8 @@ import {
   deleteProduct,
 } from "../controllers/products.controller.js";
 
+// Prefijo: /api/products
+
 router.get("/", getProducts);
 router.get("/:id", getProductById);
 router.post("/", createProduct);
