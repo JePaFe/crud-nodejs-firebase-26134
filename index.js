@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import productsRouter from "./src/routes/products.router.js";
@@ -14,7 +17,7 @@ app.get("/", (req, res) => {
   //   <h1>API de Productos</h1>
   //   <p>Servidor funcionando correctamente</p>
   // `);
-  
+
   res.json({
     message: "Servidor funcionando correctamente",
   });
@@ -47,7 +50,7 @@ app.use((req, res) => {
   res.status(404).json({ error: "Ruta no encontrada" });
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
