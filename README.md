@@ -10,7 +10,7 @@ body:
 
 ```json
 {
-  "name": "Producto 1",
+  "title": "Producto 1",
   "price": 100
 }
 ```
@@ -20,7 +20,7 @@ response:
 ```json
 {
   "id": 1,
-  "name": "Producto 1",
+  "title": "Producto 1",
   "price": 100
 }
 ```
@@ -37,7 +37,7 @@ body:
 
 ```json
 {
-  "name": "Producto 1"
+  "title": "Producto 1"
 }
 ```
 
@@ -50,3 +50,32 @@ response:
 ```
 
 status: 422
+
+## Testing
+
+### Install dependencies
+
+```shell
+npm install -D jest supertest
+```
+
+### Run tests
+
+```shell
+npm test
+```
+
+### package.json
+
+```json
+{
+  "scripts": {
+    ...
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "supertest": "^6.1.3"
+  }
+}
+```
