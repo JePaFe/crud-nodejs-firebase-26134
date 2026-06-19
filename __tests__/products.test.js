@@ -26,14 +26,14 @@ describe("CRUD /api/products", () => {
       .post("/api/products")
       .set("Authorization", `Bearer ${token}`)
       .send({
-        title: "Producto test CRUD",
+        name: "Producto test CRUD",
         price: 1000,
         stock: 10,
       });
 
     expect(response.status).toBe(201);
     expect(response.body.id).toBeDefined();
-    expect(response.body.title).toBe("Producto test CRUD");
+    expect(response.body.name).toBe("Producto test CRUD");
     expect(response.body.price).toBe(1000);
     expect(response.body.stock).toBe(10);
 
@@ -45,7 +45,7 @@ describe("CRUD /api/products", () => {
 
     expect(response.status).toBe(200);
     expect(response.body.id).toBe(productId);
-    expect(response.body.title).toBe("Producto test CRUD");
+    expect(response.body.name).toBe("Producto test CRUD");
   });
 
   test("PUT /api/products/:id debe actualizar el producto", async () => {
@@ -53,14 +53,14 @@ describe("CRUD /api/products", () => {
       .put(`/api/products/${productId}`)
       .set("Authorization", `Bearer ${token}`)
       .send({
-        title: "Producto test actualizado",
+        name: "Producto test actualizado",
         price: 2000,
         stock: 5,
       });
 
     expect(response.status).toBe(200);
     expect(response.body.id).toBe(productId);
-    expect(response.body.title).toBe("Producto test actualizado");
+    expect(response.body.name).toBe("Producto test actualizado");
     expect(response.body.price).toBe(2000);
     expect(response.body.stock).toBe(5);
   });
