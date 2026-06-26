@@ -1,13 +1,7 @@
-const products = [
-  { id: 1, name: "Mouse", price: 12000 },
-  { id: 2, name: "Teclado", price: 25000 },
-  { id: 3, name: "Monitor", price: 150000 },
-];
-
 import {
+  createProduct as createProductModel,
   getProducts as getProductsModel,
   getProductById as getProductByIdModel,
-  createProduct as createProductModel,
   updateProduct as updateProductModel,
   deleteProduct as deleteProductModel,
 } from "../models/Product.js";
